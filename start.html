@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wsaif World</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: black;
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      direction: rtl;
+      flex-direction: column;
+      padding-top: 20px;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 6px white;
+      opacity: 0.5;
+      animation: twinkle 4s infinite ease-in-out;
+    }
+    .star.small { width: 1.2px; height: 1.2px; animation-duration: 3s; opacity: 0.3; }
+    .star.medium { width: 2.2px; height: 2.2px; animation-duration: 4.5s; opacity: 0.5; }
+    .star.large { width: 3.5px; height: 3.5px; animation-duration: 6s; opacity: 0.7; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    /* قلوب فوق الصفحة على اليمين */
+    .hearts-top {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start; /* يمين في rtl */
+      padding: 0 20px;
+      margin-bottom: 30px;
+      gap: 15px;
+      z-index: 3;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 50px;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .heart {
+      width: 28px;
+      height: 28px;
+      cursor: default;
+      animation: heartbeat 1.5s infinite ease-in-out;
+      filter: drop-shadow(0 0 6px #e60039);
+      transform-origin: center center;
+    }
+
+    .heart:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+    .heart:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 6px #e60039);
+        opacity: 0.85;
+      }
+      50% {
+        transform: scale(1.3);
+        filter: drop-shadow(0 0 14px #ff4c70);
+        opacity: 1;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2;
+      max-width: 360px;
+      width: 90%;
+      margin-top: 80px; /* عشان ما تخفي تحت القلوب الثابتة */
+    }
+
+    .title {
+      font-size: 28px;
+      margin-bottom: 40px;
+      animation: flicker 2s infinite alternate, shake 1s infinite;
+      color: white;
+      text-shadow: 0 0 6px white;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(1px, -1px); }
+      50% { transform: translate(-1px, 1px); }
+      75% { transform: translate(1px, 1px); }
+      100% { transform: translate(0px, 0px); }
+    }
+
+    .btn {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      color: white;
+      padding: 15px 25px;
+      margin: 15px 0;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      width: 260px;
+    }
+
+    .btn:hover {
+      background-color: white;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .btn:active {
+      transform: scale(1.15);
+      box-shadow: 0 0 15px white;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 22px;
+      }
+
+      .btn {
+        width: 220px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- النجوم -->
+  <div class="stars" id="stars-container"></div>
+
+  <!-- قلوب فوق الصفحة على اليمين -->
+  <div class="hearts-top" aria-label="hearts">
+    <svg class="heart" viewBox="0 0 24 24" fill="#e60039" xmlns="http://www.w3.org/2000/svg" >
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 
+               3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 
+               3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 
+               11.54L12 21.35z"/>
+    </svg>
+    <svg class="heart" viewBox="0 0 24 24" fill="#e60039" xmlns="http://www.w3.org/2000/svg" >
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 
+               3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 
+               3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 
+               11.54L12 21.35z"/>
+    </svg>
+    <svg class="heart" viewBox="0 0 24 24" fill="#e60039" xmlns="http://www.w3.org/2000/svg" >
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 
+               3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 
+               3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 
+               11.54L12 21.35z"/>
+    </svg>
+  </div>
+
+  <!-- المحتوى -->
+  <div class="content">
+
+    <div class="title">Welcome to Wsaif World</div>
+
+    <button class="btn" onclick="location.href='play-confirm.html'">Play</button>
+    <button class="btn" onclick="location.href='lastpage.html'">لأهل وصايف فقط💓</button>
+    <button class="btn" onclick="location.href='ghost.html'">خروج</button>
+  </div>
+
+  <!-- سكربت النجوم -->
+  <script>
+    const starsContainer = document.getElementById('stars-container');
+    const starCount = 250; // نجوم كثيفة
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+
+      // حجم عشوائي للنجوم (صغير، متوسط، كبير)
+      const sizeRand = Math.random();
+      if(sizeRand < 0.6) star.classList.add('small');
+      else if(sizeRand < 0.9) star.classList.add('medium');
+      else star.classList.add('large');
+
+      // تأخير عشوائي للوميض
+      star.style.animationDelay = (Math.random() * 4) + 's';
+
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>

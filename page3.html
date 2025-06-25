@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اتحدااااكم هخخ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: #121212;
+      font-family: 'Orbitron', sans-serif;
+      color: #ddd;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* خلفية ضبابية شفافة لإضافة جو */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {opacity: 0.05;}
+      50% {opacity: 0.15;}
+    }
+
+    /* صندوق رسالة النظام */
+    .system-message-box {
+      position: relative;
+      background: rgba(30, 30, 30, 0.95);
+      border: 1px solid #444;
+      box-shadow: 0 0 30px rgba(100, 100, 100, 0.5);
+      border-radius: 20px;
+      width: 500px;
+      max-width: 90vw;
+      padding: 40px 35px;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 10;
+
+      /* حركة دخول من اليمين */
+      animation: slideIn 0.7s ease forwards;
+      opacity: 0;
+      transform: translateX(100%);
+      user-select: none;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .system-message-box h2 {
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      color: #eee;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      letter-spacing: 1.2px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #555;
+      border: 2px solid #888;
+      color: #eee;
+      padding: 18px 50px;
+      font-size: 1.8rem;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(200, 200, 200, 0.2);
+      user-select: none;
+    }
+
+    button:hover {
+      background-color: #eee;
+      color: #222;
+      border-color: #ccc;
+      box-shadow: 0 0 20px #eee;
+      transform: scale(1.08);
+    }
+
+    button:active {
+      transform: scale(1.12);
+      box-shadow: 0 0 30px #ddd;
+    }
+
+    @media (max-width: 600px) {
+      .system-message-box {
+        width: 90vw;
+        padding: 30px 25px;
+      }
+
+      .system-message-box h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+      }
+
+      button {
+        flex-basis: 100%;
+        padding: 16px 0;
+        font-size: 1.5rem;
+      }
+
+      .options {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="system-message-box" role="alert">
+    <h2>متى كان زواج وصايف؟</h2>
+    <div class="options">
+      <button id="correct">8/8/2024 </button>
+      <button id="wrong">2/4/2024</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('correct').addEventListener('click', () => {
+      location.href = 'page4.html';
+    });
+
+    document.getElementById('wrong').addEventListener('click', () => {
+      location.href = 'wasted.html';
+    });
+  </script>
+
+</body>
+</html>

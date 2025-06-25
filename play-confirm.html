@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>هل تريد اللعب؟</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    /* خلفية سوداء */
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* الرسالة */
+    .message {
+      font-size: 3rem;
+      margin-bottom: 50px;
+      animation: flicker 3s infinite alternate, shake 1.5s infinite;
+      user-select: none;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(2px, 2px); }
+    }
+
+    /* أزرار الخيارات */
+    .buttons {
+      display: flex;
+      gap: 40px;
+    }
+
+    button {
+      background: transparent;
+      border: 3px solid white;
+      color: white;
+      padding: 20px 50px;
+      font-size: 1.8rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-weight: 700;
+      box-shadow: 0 0 8px white;
+      user-select: none;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+      box-shadow: 0 0 20px white;
+      transform: scale(1.1);
+    }
+
+    button:active {
+      transform: scale(1.2);
+      box-shadow: 0 0 30px white;
+    }
+
+    @media (max-width: 600px) {
+      .message {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      button {
+        width: 150px;
+        padding: 15px 0;
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message">WOULD YOU LIKE TO PLAY?</div>
+
+  <div class="buttons">
+    <button id="yesBtn">YES</button>
+    <button id="noBtn">NO</button>
+  </div>
+
+  <script>
+    document.getElementById('yesBtn').addEventListener('click', () => {
+      // يروح لصفحة اللعبة الثانية
+      location.href = 'page3.html';
+    });
+
+    document.getElementById('noBtn').addEventListener('click', () => {
+      // يروح لصفحة الشبح
+      location.href = 'ghost.html';
+    });
+  </script>
+
+</body>
+</html>
